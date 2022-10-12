@@ -19,15 +19,11 @@ jobs:
     - name: Get Dockerfile
       run: wget https://raw.githubusercontent.com/pyropy/fil-2k/master/Dockerfile.lotus-debug -O Dockerfile.lotus-debug
 
-    - name: ls la
-      run: ls -la
-
     - name: Set up QEMU
-      uses: docker/setup-qemu-action@v1
+      uses: docker/setup-qemu-action@v2
 
     - name: Set up Docker Buildx
-      id: buildx
-      uses: docker/setup-buildx-action@v1
+      uses: docker/setup-buildx-action@v2
 
     - name: Login to Docker Hub
       if: github.event_name != 'pull_request'
@@ -42,7 +38,7 @@ jobs:
       with:
         # list of Docker images to use as base name for tags
         images: |
-          hub.docker.com/r/pyropy/lotus
+          pyropy/lotus
         # Docker tags based on the following events/attributes
         tags: |
           type=schedule
@@ -58,7 +54,6 @@ jobs:
       with:
         context: ./
         file: Dockerfile.lotus-debug
-        platforms: linux/amd64,linux/arm/v7
         push: ${{ github.event_name != 'pull_request' }}
         target: lotus
         tags: ${{ steps.lotus.outputs.tags }}
