@@ -55,6 +55,6 @@ jobs:
         context: ./
         file: Dockerfile.lotus-debug
         push: ${{ github.event_name != 'pull_request' }}
-        target: lotus
+        target: lotus-all-in-one
         tags: ${{ steps.lotus.outputs.tags }}
         labels: ${{ steps.lotus.outputs.labels }}

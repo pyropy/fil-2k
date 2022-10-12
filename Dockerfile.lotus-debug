@@ -44,7 +44,7 @@ WORKDIR /opt/filecoin
 ARG RUSTFLAGS=""
 ARG GOFLAGS=""
 
-RUN make lotus lotus-miner lotus-worker lotus-shed lotus-wallet lotus-gateway lotus-stats
+RUN make 2k
 
 
 FROM ubuntu:20.04 AS base
