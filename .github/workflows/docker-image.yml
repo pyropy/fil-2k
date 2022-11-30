@@ -7,14 +7,13 @@ on:
     branches: [ "master" ]
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
       with:
         repository: 'filecoin-project/lotus'
-        ref: 'v1.17.1'
+        ref: 'v1.18.1'
 
     - name: Get Dockerfile
       run: wget https://raw.githubusercontent.com/pyropy/fil-2k/master/Dockerfile.lotus-debug -O Dockerfile.lotus-debug
@@ -41,13 +40,7 @@ jobs:
           pyropy/lotus
         # Docker tags based on the following events/attributes
         tags: |
-          type=schedule
-          type=ref,event=branch
-          type=ref,event=pr
-          type=semver,pattern=1.17.1
-          type=semver,pattern=1.17
-          type=semver,pattern=v1.17.1
-          type=sha
+          type=semver,pattern=v1.18.1
 
     - name: Build and push
       uses: docker/build-push-action@v2
