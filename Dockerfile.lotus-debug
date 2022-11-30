@@ -193,6 +193,7 @@ COPY --from=builder /opt/filecoin/lotus-gateway /usr/local/bin/
 COPY --from=builder /opt/filecoin/lotus-miner /usr/local/bin/
 COPY --from=builder /opt/filecoin/lotus-worker /usr/local/bin/
 COPY --from=builder /opt/filecoin/lotus-stats /usr/local/bin/
+COPY --from=builder /opt/filecoin/lotus-seed /usr/local/bin/
 
 RUN mkdir /var/tmp/filecoin-proof-parameters
 RUN mkdir /var/lib/lotus
